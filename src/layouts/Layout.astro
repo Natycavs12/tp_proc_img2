@@ -1,23 +1,81 @@
+---
+import "../styles/global.css";
+import Card from "../components/Card.astro";
+import background from "../assets/background.svg";
+---
+
 <!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <link rel="icon" type="image/svg+xml" href="/favicon.svg" /> -->
+    <!-- <link rel="icon" href="/favicon.ico" /> -->
+    <link rel="icon" href="/pikachu_icon.png" />
+    <link
+      rel="stylesheet"
+      href="/node_modules/@fortawesome/fontawesome-free/css/all.min.css"
+    />
+    <!-- <meta name="generator" content={Astro.generator} /> -->
+    <title>Mejorador de Imágenes</title>
+  </head>
+  <body
+    style={`background-image: url(${background.src}); background-size: cover; background-position: center; background-repeat: no-repeat; min-height: 100vh;`}
+  >
+    <div class="app-content">
+      <section class="title text-center text-bold text-4xl mb-4">
+        <h1>Mejorador de Imágenes</h1>
+        <br />
+        <h3>Para convertir y editar imágenes online</h3>
+        <br />
+        <p>Dale una nueva vida a tus fotos viejas ...</p>
+        <br />
+        <p>
+          O también convierte tus imágenes a escala de grises, detecta bordes o
+          elimina el fondo con nuestro mejorador de calidad de imágenes.
+        </p>
+      </section>
+      <slot />
+      <section class="grilla">
+        <Card>
+          <!-- <h1>Escala de grises</h1> -->
+          <!-- <a href="/grayscale" class="btn">Escala de grises</a> -->
+          <a href="/mejorador?action=calidad" class="btn">Mejorar Calidad</a>
+        </Card>
+        <Card>
+          <!-- <h1>Escala de grises</h1> -->
+          <!-- <a href="/grayscale" class="btn">Escala de grises</a> -->
+          <a href="/mejorador?action=sepia" class="btn">Sepia</a>
+        </Card>
+        <!-- <h1>Procesador de Imágenes</h1> -->
+        <Card>
+          <!-- <h1>Escala de grises</h1> -->
+          <!-- <a href="/grayscale" class="btn">Escala de grises</a> -->
+          <a href="/mejorador?action=grayscale" class="btn">Escala de grises</a>
+        </Card>
+        <Card>
+          <!-- <h1>Detección de bordes</h1> -->
+          <!-- <a href="/edges" class="btn">Detección de bordes</a> -->
+          <a href="/mejorador?action=edges" class="btn">Detección de bordes</a>
+        </Card>
+        <Card>
+          <!-- <h1>Eliminar fondo</h1> -->
+          <!-- <a href="/remove-bg" class="btn">Eliminar fondo</a> -->
+          <a href="/mejorador?action=remove_bg" class="btn">Eliminar fondo</a>
+        </Card>
+        <!-- <Card>
+    <a href="/grayscale" class="btn">Escala de grises</a>
+  </Card> -->
+      </section>
+    </div>
+  </body>
 </html>
 
 <style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
+  html,
+  body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+  }
 </style>
