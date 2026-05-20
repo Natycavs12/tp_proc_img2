@@ -24,3 +24,9 @@ pnpm-debug.log*
 .idea/
 .vscode/
 
+tp/
+tp.zip
+zorro.jpg
+
+pycache/
+*.pyc
