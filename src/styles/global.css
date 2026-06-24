@@ -147,14 +147,14 @@ body::before {
   color: #fff;
 }
 
-.image-card img {
+/* .image-card img {
   max-width: 100%;
   height: auto;
   border-radius: 6px;
   display: block;
   margin: 0.5rem auto;
   background: rgba(0,0,0,0.15);
-}
+} */
 
 .controls {
   display: flex;
@@ -177,3 +177,27 @@ body::before {
 .btn:active { transform: translateY(1px); }
 
 .label-muted { color: rgba(255,255,255,0.8); font-size: 0.95rem; }
+
+.grilla {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+@media (max-width: 900px) {
+  .grilla {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .grilla {
+    grid-template-columns: 1fr;
+  }
+}
+
+.grilla > * {
+  width: 100%;
+}
