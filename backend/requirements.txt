@@ -18,10 +18,10 @@ lazy-loader==0.5
 llvmlite==0.47.0
 MarkupSafe==3.0.3
 networkx==3.6.1
-numba==0.65.1
+numba==0.59.1
 numpy==1.26.4
 onnxruntime==1.25.1
-opencv-python==4.13.0.92
+opencv-python==4.8.1.78
 packaging==26.2
 pillow==12.2.0
 platformdirs==4.9.6
