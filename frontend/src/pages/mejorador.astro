@@ -1,0 +1,15 @@
+---
+import "../styles/global.css";
+import background from "../assets/background.svg";
+import MejoradorClient from "../components/MejoradorClient.jsx";
+const action = Astro.url.searchParams.get("action") ;
+---
+
+<section
+  style={`background-image: url(${background.src}); background-size: cover; background-position: center; min-height: 100vh;`}
+>
+
+  <MejoradorClient client:only action={action} />
+  <!-- <p style="color:white">debug</p> -->
+  <!-- <h1 style="color:white">{action}</h1> -->
+</section>

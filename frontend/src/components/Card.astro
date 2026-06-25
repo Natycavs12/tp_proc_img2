@@ -1,0 +1,166 @@
+---
+// src/components/Card.astro
+// Este es un ejemplo básico de un componente Card
+const {
+  title = "Título",
+  icon = "fa-solid fa-wand-magic-sparkles",
+  hrefAction = "",
+  cta = "Usar herramienta",
+} = Astro.props;
+---
+
+<!-- <div class="card"> --><!-- <div class="card w-full bg-black/70 backdrop-blur-md">
+  <div>
+    <p>
+      {title}
+    </p>
+  </div>
+  <div class="bg-black/80 shadow-lg rounded-xl p-8 border border-gray-200 hover:shadow-2xl transition duration-300" >
+    <slot />
+  </div>
+</div> --><!-- <div class="card w-full bg-black/80 shadow-lg rounded-xl p-6 border border-gray-200 hover:shadow-2xl transition duration-300">
+  <h3 class="text-lg font-bold mb-2">{title}</h3>
+
+  <slot />
+</div> --><!-- <style>
+  .card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 16px;
+    margin: 16px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+    background-color: white;
+    max-width: 250px;
+  }
+</style> -->
+<a href={`/mejorador?action=${hrefAction}`} target="_self" class="card group">
+  <div class="card-inner">
+    <div class="top">
+      <div class="icon-wrapper">
+        <i class={icon}></i>
+      </div>
+      <h3 class="title">{title}</h3>
+    </div>
+
+    <div class="content">
+      <slot />
+    </div>
+<!-- <p style="color:red">{hrefAction}</p> -->
+    <div class="cta">{cta} →</div>
+  </div>
+</a>
+
+<style>
+  .card {
+    text-decoration: none;
+    display: block;
+  }
+
+  .card-inner {
+    position: relative;
+    height: 100%;
+    padding: 20px;
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+
+    transition: all 0.25s ease;
+    overflow: hidden;
+    /* background: rgba(15, 15, 20, 0.65);
+  background: rgba(0,0,0,0.55);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 18px;
+  padding: 22px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  transition: all 0.25s ease;
+  position: relative;
+  overflow: hidden; */
+  }
+
+  /* hover tipo SaaS */
+  .card:hover .card-inner {
+    transform: translateY(-6px);
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  }
+
+  /* glow sutil */
+  .card-inner::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+      circle at top left,
+      rgba(99, 102, 241, 0.15),
+      transparent 60%
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .card:hover .card-inner::before {
+    opacity: 1;
+  }
+
+  /* top layout */
+.top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+
+  /* icono */
+  .icon-wrapper {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.08);
+    color: white;
+    font-size: 18px;
+  }
+
+  /* título */
+  .title {
+    font-size: 18px;
+    font-weight: 700;
+    color: white;
+  }
+
+  /* contenido */
+  .content {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.7);
+    flex-grow: 1;
+  }
+
+  /* CTA */
+  .cta {
+    margin-top: auto;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.85);
+    /* display: flex; */
+    /* align-items: center;
+    gap: 6px; */
+    opacity: 0.8;
+  transition: 0.2s;
+  }
+
+  /* animación hover CTA */
+  .card:hover .cta {
+    color: white;
+    opacity: 1;
+  }
+</style>

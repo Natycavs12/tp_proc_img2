@@ -1,0 +1,118 @@
+---
+import "../styles/global.css";
+import Card from "../components/Card.astro";
+import background from "../assets/background.svg";
+import "@fortawesome/fontawesome-free/css/all.min.css";
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <link rel="icon" type="image/svg+xml" href="/favicon.svg" /> -->
+    <!-- <link rel="icon" href="/favicon.ico" /> -->
+    <link rel="icon" href="/pikachu_icon.png" />
+    <!-- <link
+      rel="stylesheet"
+      href="/node_modules/@fortawesome/fontawesome-free/css/all.min.css"
+    /> -->
+    <!-- <meta name="generator" content={Astro.generator} /> -->
+    <title>Mejorador de Imágenes</title>
+  </head>
+  <body
+    style={`background-image: url(${background.src}); background-size: cover; background-position: center; background-repeat: no-repeat; min-height: 100vh;`}
+  >
+    <div class="app-content">
+      <section class="title text-center text-bold text-4xl mb-4">
+        <h1>Mejorador de Imágenes</h1>
+        <br />
+        <h3 class="text-xl font-semibold">
+          Para convertir y editar imágenes online
+        </h3>
+        <br />
+        <p class="text-lg">
+          Dale una nueva vida a tus fotos viejas ... O también convierte tus
+          imágenes a escala de grises, detecta bordes o elimina el fondo.
+        </p>
+      </section>
+      <slot />
+      <!-- <section class="grilla"> -->
+      <!-- <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto grilla"> -->
+      <section class="grid">
+        <!-- <Card title="Mejorar Calidad" content="Aumenta la calidad de tus imágenes con nuestro mejorador." > <a href="/mejorador?action=remove_bg" class="btn">Mejorar Calidad</a> </Card>
+        <Card title="Escala de Grises" content="Convierte tus imágenes a escala de grises." ><a href="/mejorador?action=grayscale" class="btn">Escala de Grises</a></Card>
+        <Card title="Sepia" content="Aplica un efecto de sepia a tus imágenes." ><a href="/mejorador?action=sepia" class="btn">Sepia</a> </Card>
+        <Card title="Detección de Bordes" content="Detecta los bordes de tus imágenes." ><a href="/mejorador?action=edges" class="btn">Detección de Bordes</a> </Card>
+        <Card title="Eliminar Fondo" content="Elimina el fondo de tus imágenes." ><a href="/mejorador?action=remove_bg" class="btn">Eliminar Fondo</a> </Card> -->
+        <Card
+          title="Mejorar Calidad"
+          icon="fa-solid fa-wand-magic-sparkles"
+          hrefAction="calidad"
+          cta="Mejorar Calidad"
+        >
+          <p>Aumenta la calidad de tus imágenes con nuestro mejorador.</p>
+          <!-- <a class="btn">Mejorar Calidad</a> -->
+        </Card>
+        <Card
+          title="Desenfocar"
+          icon="fa-solid fa-image"
+          hrefAction="blur"
+          cta="Desenfocar"
+        >
+          <p>Aplica un efecto de desenfoque a tus imágenes.</p>
+          <!-- <a class="btn">Desenfocar</a> -->
+        </Card>
+        <Card
+          title="Escala de Grises"
+          icon="fa-solid fa-image"
+          hrefAction="grayscale"
+          cta="Escala de Grises"
+        >
+          <p>Convierte tus imágenes a escala de grises.</p>
+          <!-- <a class="btn">Escala de Grises</a> -->
+        </Card>
+        <Card
+          title="Sepia"
+          icon="fa-solid fa-camera-retro"
+          hrefAction="sepia"
+          cta="Sepia"
+        >
+          <p>Aplica un efecto de sepia a tus imágenes.</p>
+          <!-- <a class="btn">Sepia</a> -->
+        </Card>
+        <Card
+          title="Detección de Bordes"
+          icon="fa-solid fa-border-all"
+          hrefAction="edges"
+          cta="Detección de Bordes"
+        >
+          <p>Detecta los bordes de tus imágenes.</p>
+          <!-- <a class="btn">Detección de Bordes</a> -->
+        </Card>
+        <Card
+          title="Eliminar Fondo"
+          icon="fa-solid fa-trash-alt"
+          hrefAction="remove_bg"
+          cta="Eliminar Fondo"
+        >
+          <p>Elimina el fondo de tus imágenes.</p>
+          <!-- <a class="btn">Eliminar Fondo</a> -->
+        </Card>
+
+        <!-- <Card>
+    <a href="/grayscale" class="btn">Escala de grises</a>
+  </Card> -->
+      </section>
+    </div>
+  </body>
+</html>
+
+<style>
+  html,
+  body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+  }
+</style>
