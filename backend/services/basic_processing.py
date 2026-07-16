@@ -24,12 +24,6 @@ def detect_edges(file, params):
     return save_image(edges)
 
 def remove_background(file):
-    # img = read_image(file)
-    # gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-    # _, mask = cv2.threshold(gray, 250, 255, cv2.THRESH_BINARY_INV)
-    # wobg = cv2.bitwise_and(img, img, mask=mask)
-    # return save_image(wobg)
-    #-------------------------
     input_img = read_image(file)
     output_img = remove(input_img)
     return save_image(output_img)
@@ -41,7 +35,6 @@ def sepia(file, params):
                               [0.272, 0.534, 0.131]])
     intensity = int(params) if params else 100
     sepia_img = cv2.transform(img, sepia_filter)
-    # sepia_img = np.clip(sepia_img, 0, params).astype(np.uint8)
     sepia_img = np.clip(sepia_img, 0, 255)
     alpha = intensity / 100.0
     result = cv2.addWeighted(
@@ -62,7 +55,6 @@ def calidad(file):
     return save_image(enhanced_img)
 
 def blur(file, params):
-    # print(f"Received params in blur function: {params}")
     img = read_image(file)
     # Obtener el valor de desenfoque del parámetro
     blur_value = int(params) if params else 5  # Valor por defecto si no se proporciona
@@ -70,7 +62,6 @@ def blur(file, params):
     if blur_value % 2 == 0:
         blur_value += 1
     blurred_img = cv2.GaussianBlur(img, (blur_value, blur_value), 0)
-    # blurred_img = img.filter(ImageFilter.GaussianBlur(radius=blur_value))
     return save_image(blurred_img)
 
 def read_image(file):

@@ -21,25 +21,19 @@ def process_image():
         if not file or not action:
             return {"error": "missing data"}, 400
 
-        if action == "grayscale":
-            result = to_grayscale(file)
-        elif action == "edges":
-            # threshold = params.get("threshold", 100)
-            result = detect_edges(file, params)
-        elif action == "remove_bg":
-            result = remove_background(file)
-        elif action == "sepia":
-            intensity = params.get("intensity", 50)
-            result = sepia(file, intensity)
-        elif action == "calidad":
-            result = calidad(file)
-        elif action == "blur":
-            blur_value = params.get("blur", 5)
-            result = blur(file, blur_value )
-        elif action == "all":
-            result = remove_background(detect_edges(to_grayscale(file)))
+        actions = {
+            "grayscale": to_grayscale(file),
+            "edges": detect_edges(file, params),
+            "remove_bg": remove_background(file),
+            "sepia": sepia(file, params.get("intensity", 50)),
+            "calidad": calidad(file),
+            "blur": blur(file, params.get("blur", 5)),
+            "all": remove_background(detect_edges(to_grayscale(file)))
+        }
+
+        if action in actions:
+            result = actions[action]
         else:
             return {"error": "Acción inválida"}, 400
 
         return send_file(result, mimetype='image/png')
-
